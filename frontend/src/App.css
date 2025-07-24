@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  flex: 1;
+}
+
+a {
+  text-decoration: none;
+  color: #3498db;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 18px;
+  color: #3498db;
+}
+
+/* Dashboard styles */
+.dashboard {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.dashboard h2 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* Role-specific dashboard colors */
+.patient-dashboard {
+  border-top: 4px solid #3498db;
+}
+
+.doctor-dashboard {
+  border-top: 4px solid #2ecc71;
+}
+
+.shop-dashboard {
+  border-top: 4px solid #f39c12;
+}
+
+.admin-dashboard {
+  border-top: 4px solid #9b59b6;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

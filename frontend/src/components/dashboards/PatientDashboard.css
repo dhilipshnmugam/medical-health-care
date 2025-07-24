@@ -1,0 +1,172 @@
+.patient-dashboard-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.patient-dashboard-container h1 {
+  color: #3498db;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.dashboard-subtitle {
+  text-align: center;
+  color: #7f8c8d;
+  margin-bottom: 30px;
+}
+
+.dashboard-section {
+  background-color: white;
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-section h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+/* Medical ID Card Styles */
+.medical-id-card {
+  text-align: center;
+}
+
+.qr-container {
+  margin: 20px auto;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+}
+
+.patient-info {
+  margin-top: 15px;
+}
+
+.patient-info h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.patient-info p {
+  margin-bottom: 8px;
+  color: #34495e;
+  font-size: 16px;
+}
+
+.id-instructions {
+  margin-top: 15px;
+  font-style: italic;
+  color: #7f8c8d;
+}
+
+/* Prescriptions Section */
+.no-data {
+  text-align: center;
+  padding: 30px;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+.prescriptions-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.prescription-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+  border-left: 4px solid #3498db;
+}
+
+.prescription-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.prescription-status.active {
+  background-color: #e3f2fd;
+  color: #2980b9;
+}
+
+.prescription-status.fulfilled {
+  background-color: #d4efdf;
+  color: #27ae60;
+}
+
+.prescription-card h3 {
+  margin-top: 5px;
+  margin-bottom: 8px;
+  color: #2c3e50;
+  font-size: 18px;
+}
+
+.prescription-date {
+  color: #7f8c8d;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.medications {
+  margin-top: 15px;
+}
+
+.medications h4 {
+  font-size: 16px;
+  color: #34495e;
+  margin-bottom: 10px;
+}
+
+.medications ul {
+  list-style: none;
+  padding: 0;
+}
+
+.medications li {
+  padding: 8px 0;
+  border-bottom: 1px dashed #ecf0f1;
+}
+
+.medications li:last-child {
+  border-bottom: none;
+}
+
+.med-name {
+  font-weight: 500;
+  color: #2c3e50;
+  display: block;
+}
+
+.med-details {
+  color: #7f8c8d;
+  font-size: 14px;
+}
+
+.fulfilled-date {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: right;
+  color: #27ae60;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .prescriptions-list {
+    grid-template-columns: 1fr;
+  }
+}
