@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Health Care - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <h1>Medical Health Care</h1>
+            </div>
+            <nav class="nav">
+                <a href="#dashboard" class="nav-link active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+                <a href="#patients" class="nav-link" data-section="patients">
+                    <i class="fas fa-users"></i> Patients
+                </a>
+                <a href="#appointments" class="nav-link" data-section="appointments">
+                    <i class="fas fa-calendar-alt"></i> Appointments
+                </a>
+                <a href="#doctors" class="nav-link" data-section="doctors">
+                    <i class="fas fa-user-md"></i> Doctors
+                </a>
+            </nav>
+        </header>
+
+        <main class="main">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section active">
+                <h2>Dashboard</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-patients">0</h3>
+                            <p>Total Patients</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-appointments">0</h3>
+                            <p>Today's Appointments</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-doctors">0</h3>
+                            <p>Available Doctors</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="pending-appointments">0</h3>
+                            <p>Pending Appointments</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent-activity">
+                    <h3>Recent Activity</h3>
+                    <div id="activity-list" class="activity-list">
+                        <p>No recent activity</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Patients Section -->
+            <section id="patients" class="section">
+                <div class="section-header">
+                    <h2>Patient Management</h2>
+                    <button class="btn btn-primary" id="add-patient-btn">
+                        <i class="fas fa-plus"></i> Add Patient
+                    </button>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="search-patients" placeholder="Search patients...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="table-container">
+                    <table id="patients-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Last Visit</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patients-tbody">
+                            <!-- Patient data will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Appointments Section -->
+            <section id="appointments" class="section">
+                <div class="section-header">
+                    <h2>Appointment Management</h2>
+                    <button class="btn btn-primary" id="add-appointment-btn">
+                        <i class="fas fa-plus"></i> Schedule Appointment
+                    </button>
+                </div>
+                <div class="appointments-filter">
+                    <select id="appointment-filter">
+                        <option value="all">All Appointments</option>
+                        <option value="today">Today</option>
+                        <option value="upcoming">Upcoming</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div class="table-container">
+                    <table id="appointments-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Patient</th>
+                                <th>Doctor</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="appointments-tbody">
+                            <!-- Appointment data will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Doctors Section -->
+            <section id="doctors" class="section">
+                <div class="section-header">
+                    <h2>Doctor Management</h2>
+                    <button class="btn btn-primary" id="add-doctor-btn">
+                        <i class="fas fa-plus"></i> Add Doctor
+                    </button>
+                </div>
+                <div class="doctors-grid" id="doctors-grid">
+                    <!-- Doctor cards will be inserted here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for adding/editing patients -->
+    <div id="patient-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="patient-modal-title">Add Patient</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="patient-form">
+                <div class="form-group">
+                    <label for="patient-name">Full Name</label>
+                    <input type="text" id="patient-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="patient-age">Age</label>
+                    <input type="number" id="patient-age" required>
+                </div>
+                <div class="form-group">
+                    <label for="patient-phone">Phone</label>
+                    <input type="tel" id="patient-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="patient-email">Email</label>
+                    <input type="email" id="patient-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="patient-address">Address</label>
+                    <textarea id="patient-address"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-patient">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Patient</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for adding/editing appointments -->
+    <div id="appointment-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="appointment-modal-title">Schedule Appointment</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="appointment-form">
+                <div class="form-group">
+                    <label for="appointment-patient">Patient</label>
+                    <select id="appointment-patient" required>
+                        <option value="">Select Patient</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="appointment-doctor">Doctor</label>
+                    <select id="appointment-doctor" required>
+                        <option value="">Select Doctor</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="appointment-date">Date</label>
+                    <input type="date" id="appointment-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="appointment-time">Time</label>
+                    <input type="time" id="appointment-time" required>
+                </div>
+                <div class="form-group">
+                    <label for="appointment-notes">Notes</label>
+                    <textarea id="appointment-notes"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-appointment">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Schedule Appointment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for adding/editing doctors -->
+    <div id="doctor-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="doctor-modal-title">Add Doctor</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="doctor-form">
+                <div class="form-group">
+                    <label for="doctor-name">Full Name</label>
+                    <input type="text" id="doctor-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="doctor-specialty">Specialty</label>
+                    <input type="text" id="doctor-specialty" required>
+                </div>
+                <div class="form-group">
+                    <label for="doctor-phone">Phone</label>
+                    <input type="tel" id="doctor-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="doctor-email">Email</label>
+                    <input type="email" id="doctor-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="doctor-experience">Years of Experience</label>
+                    <input type="number" id="doctor-experience" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-doctor">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Doctor</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
